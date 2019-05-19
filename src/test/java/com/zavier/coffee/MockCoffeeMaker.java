@@ -12,6 +12,9 @@ public class MockCoffeeMaker implements CoffeeMakerApi {
     public boolean potPresent;
     public boolean potNotEmpty;
 
+    /**
+     * 默认状态： 开关按钮关闭，指示灯关闭，加热器关闭，减压阀关闭，加热器中无水，加热盘所存在杯子，加热盘中杯子为空
+     */
     public MockCoffeeMaker() {
         this.buttonPressed = false;
         this.lightOn = false;

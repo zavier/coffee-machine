@@ -37,7 +37,7 @@ public class M4HotWaterSource extends HotWaterSource implements Pollable {
     public void poll() {
         BoilerStatus boilerStatus = coffeeMakerApi.getBoilerStatus();
         if (isBrewing) {
-            // 如果正在煮咖啡，且加热器中没有水是空的
+            // 如果正在煮咖啡，且加热器中没有水是空的（使用光了），这时认为咖啡冲煮完成
             if (boilerStatus == BoilerStatus.EMPTY) {
                 coffeeMakerApi.setBoilerState(BoilerState.OFF);
                 coffeeMakerApi.setReliefValveState(ReliefValueState.CLOSED);
