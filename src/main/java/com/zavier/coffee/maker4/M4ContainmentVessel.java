@@ -38,6 +38,7 @@ public class M4ContainmentVessel extends ContainmentVessel implements Pollable {
     @Override
     public void poll() {
         WarmerPlatStatus potStatus = coffeeMakerApi.getWarmerPlateStatus();
+        // 保温盘状态有变更
         if (potStatus != lastPotStatus) {
             handleBrewEvent(potStatus);
         } else if (!isComplete) {
@@ -51,6 +52,7 @@ public class M4ContainmentVessel extends ContainmentVessel implements Pollable {
             containerAvailable();
             coffeeMakerApi.setWarmerState(WarmerState.ON);
         } else if (potStatus == WarmerPlatStatus.WARMER_EMPTY) {
+            // 保温盘是空的，杯子被拿走，此时关闭加热器等
             containerUnAvailable();
             coffeeMakerApi.setWarmerState(WarmerState.OFF);
         } else if (potStatus == WarmerPlatStatus.POT_EMPTY){

@@ -1,5 +1,8 @@
 package com.zavier.coffee.base;
 
+/**
+ * 咖啡容器
+ */
 public abstract class ContainmentVessel {
 
     private UserInterface ui;

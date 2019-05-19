@@ -34,7 +34,7 @@ public interface CoffeeMakerApi {
     void setBoilerState(BoilerState s);
 
     /**
-     * 这个函数负责开、关加热器中的加热元件
+     * 这个函数负责开、关保温盘加热器中的加热元件
      * @param s
      */
     void setWarmerState(WarmerState s);
@@ -53,5 +53,5 @@ public interface CoffeeMakerApi {
      * 加热器中的水不会再喷到过滤器上
      * @param s
      */
-    void setReliefValueState(ReliefValueState s);
+    void setReliefValveState(ReliefValueState s);
 }

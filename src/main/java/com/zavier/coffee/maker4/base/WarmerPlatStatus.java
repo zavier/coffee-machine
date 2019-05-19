@@ -1,8 +1,11 @@
 package com.zavier.coffee.maker4.base;
 
+/**
+ * 保温盘状态
+ */
 public enum WarmerPlatStatus {
     /**
-     * 保温盘是空的
+     * 保温盘是空的(上面没有壶)
      */
     WARMER_EMPTY,
 
@@ -12,7 +15,7 @@ public enum WarmerPlatStatus {
     POT_EMPTY,
 
     /**
-     * 保温盘壶中有咖啡（已经制作完喝完了，制作结束）
+     * 保温盘壶中有咖啡
      */
     POT_NOT_EMPTY
 }

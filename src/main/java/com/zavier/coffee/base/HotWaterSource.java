@@ -1,5 +1,8 @@
 package com.zavier.coffee.base;
 
+/**
+ * 热水(咖啡)生成器
+ */
 public abstract class HotWaterSource {
 
     private UserInterface ui;

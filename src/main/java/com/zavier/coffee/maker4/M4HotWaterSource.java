@@ -29,7 +29,7 @@ public class M4HotWaterSource extends HotWaterSource implements Pollable {
      */
     @Override
     public void startBrewing() {
-        coffeeMakerApi.setReliefValueState(ReliefValueState.CLOSED);
+        coffeeMakerApi.setReliefValveState(ReliefValueState.CLOSED);
         coffeeMakerApi.setBoilerState(BoilerState.ON);
     }
 
@@ -40,7 +40,7 @@ public class M4HotWaterSource extends HotWaterSource implements Pollable {
             // 如果正在煮咖啡，且加热器中没有水是空的
             if (boilerStatus == BoilerStatus.EMPTY) {
                 coffeeMakerApi.setBoilerState(BoilerState.OFF);
-                coffeeMakerApi.setReliefValueState(ReliefValueState.CLOSED);
+                coffeeMakerApi.setReliefValveState(ReliefValueState.CLOSED);
                 declareDone();
             }
         }
@@ -52,7 +52,7 @@ public class M4HotWaterSource extends HotWaterSource implements Pollable {
     @Override
     public void pause() {
         coffeeMakerApi.setBoilerState(BoilerState.OFF);
-        coffeeMakerApi.setReliefValueState(ReliefValueState.OPEN);
+        coffeeMakerApi.setReliefValveState(ReliefValueState.OPEN);
     }
 
     /**
@@ -60,7 +60,9 @@ public class M4HotWaterSource extends HotWaterSource implements Pollable {
      */
     @Override
     public void resume() {
-        coffeeMakerApi.setBoilerState(BoilerState.ON);
-        coffeeMakerApi.setReliefValueState(ReliefValueState.CLOSED);
+        if (isReady()) {
+            coffeeMakerApi.setBoilerState(BoilerState.ON);
+            coffeeMakerApi.setReliefValveState(ReliefValueState.CLOSED);
+        }
     }
 }
